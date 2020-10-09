@@ -1,7 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const util = require("util");
 
-promptQuestions();
+const writeFileAsync = util.promisify(fs.writeFile);
 
 // array of questions for user
 function promptQuestions() {
@@ -53,31 +54,50 @@ function promptQuestions() {
             name: "contact",
             message: "Contact Preferences"
         }
-    ])
+    ]);
+};
+
+// function to write README file
+function writeToFile(answers) {
+    return `
+    ${answers.title}
+    ${answers.description}
+    ${answers.install}
+    ${answers.usage}
+    ${answers.contributors}
+    ${answers.tests}
+    ${answers.github}
+    ${answers.email}`;
+    
+    // Table of Contents
+    // Badge for License
+    // Description
+    // Installation Instructions
+    // Usage
+    // Contributing
+    // Tests
+    // License
+        // License Info
+    // Questions
+        // Github Username (link to their profile)
+        // Email
+        // Instructions for contact 
 }
 
-// // function to write README file
-// function writeToFile(fileName, data) {
-//     // Title
-//     // Table of Contents
-//     // Badge for License
-//     // Description
-//     // Installation Instructions
-//     // Usage
-//     // Contributing
-//     // Tests
-//     // License
-//         // License Info
-//     // Questions
-//         // Github Username (link to their profile)
-//         // Email
-//         // Instructions for contact 
-// }
+// function to initialize program
+async function init() {
+    try {
+      const answers = await promptQuestions();
+  
+      const readme = writeToFile(answers);
+  
+      await writeFileAsync("README.md", readme);
+  
+      console.log("Successfully wrote to README.md");
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
-// // function to initialize program
-// function init() {
-//     // node index.js? Or start?
-// }
-
-// // function call to initialize program
-// init()
+// function call to initialize program
+init()
