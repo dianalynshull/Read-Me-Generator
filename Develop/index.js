@@ -11,48 +11,48 @@ function promptQuestions() {
         {
             type: "input",
             name: "title",
-            message: "Title of your application: "
+            message: "Project Title: "
         },
         {
             type: "input",
             name: "description",
-            message: "Write a short description of your application: "
+            message: "Description of Application: "
         },
         {
             type: "input",
             name: "install",
-            message: "Enter installation instructions for your application"
+            message: "Installation Instructions: "
         },
         {
             type: "input",
             name: "usage",
-            message: "Application usage"
+            message: "Application Usage: "
         },
         
         {
             type: "input",
             name: "contributors",
-            message: "Contributors"
+            message: "Contributors/Credits: "
         },
         {
             type: "input",
             name: "tests",
-            message: "Application Tests"
+            message: "Application Testing: "
         },
         {
             type: "input",
             name: "github",
-            message: "GitHub Username"
+            message: "GitHub Username: "
         },
         {
             type: "input",
             name: "email",
-            message: "Email"
+            message: "Email: "
         },
         {
             type: "input",
             name: "contact",
-            message: "Contact Preferences"
+            message: "Contact Preferences: "
         }
     ]);
 };
@@ -60,14 +60,28 @@ function promptQuestions() {
 // function to write README file
 function writeToFile(answers) {
     return `
-    ${answers.title}
-    ${answers.description}
-    ${answers.install}
-    ${answers.usage}
-    ${answers.contributors}
-    ${answers.tests}
-    ${answers.github}
-    ${answers.email}`;
+# ${answers.title}
+## Table of Contents
+* [Description](#description)
+* [Installation](#installation)
+* [Application Usage](#usage)
+* [Contributors](#contributors)
+* [Testing](#testing)
+* [Contact Me](#contact)
+## Description <a id="description"></a>
+* ${answers.description}
+## Installation <a id="installation"></a>
+* ${answers.install}
+## Application Usage <a id="usage"></a>
+* ${answers.usage}
+## Contributors <a id="contributors"></a>
+* ${answers.contributors}
+## Running Tests <a id="testing"></a>
+* ${answers.tests}
+## Contact Me <a id="contact"></a>
+* Github: ${answers.github}
+* Email: ${answers.email}
+* Preferred Contact: ${answers.contact}`;
     
     // Table of Contents
     // Badge for License
