@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
+let license;
+let badge;
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -28,7 +30,12 @@ function promptQuestions() {
             name: "usage",
             message: "Application Usage: "
         },
-        
+        {
+            type: "list",
+            name: "license",
+            message: "Please choose a license: ",
+            choices: ["Apache", "GNU GPLv3", "MIT", "ISC"],
+        },
         {
             type: "input",
             name: "contributors",
@@ -55,11 +62,29 @@ function promptQuestions() {
             message: "Contact Preferences: "
         }
     ]);
+
 };
 
 // function to write README file
-function writeToFile(answers) {
+function writeToFile(answers, badge, license) {
+    if (answers.license === "Apache") {
+        badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+        license = "[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)"
+    }
+    else if (answers.license === "GNU GPLv3") {
+        badge = "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+        license = "[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)"
+    }
+    else if (answers.license === "MIT") {
+        badge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+        license = "[MIT](https://choosealicense.com/licenses/gpl-3.0/)"
+    }
+    else if (answers.license === "ISC") {
+        badge = "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)";
+        license = "[ISC](https://choosealicense.com/licenses/isc/)"
+    }
     return `
+${badge}
 # ${answers.title}
 ## Table of Contents
 * [Description](#description)
@@ -78,8 +103,10 @@ function writeToFile(answers) {
 * ${answers.contributors}
 ## Running Tests <a id="testing"></a>
 * ${answers.tests}
-## Contact Me <a id="contact"></a>
-* Github: ${answers.github}
+## License
+* ${license}
+## Questions? Contact Me! <a id="contact"></a>
+* Github: https://github.com/${answers.github}
 * Email: ${answers.email}
 * Preferred Contact: ${answers.contact}`;
     
