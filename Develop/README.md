@@ -1,5 +1,5 @@
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 # Read Me Generator
 ## Table of Contents
 * [Description](#description)
@@ -9,18 +9,18 @@
 * [Testing](#testing)
 * [Contact Me](#contact)
 ## Description <a id="description"></a>
-* Creates a good read me file for your application.
+* Creates a README.md file for your application through node
 ## Installation <a id="installation"></a>
-* Open your terminal and enter "npm i". This will install necessary modules.
+* Open your desired terminal. Enter npm i and it will install all necessary modules
 ## Application Usage <a id="usage"></a>
-* Creates a readme.md file for your application. This allows you to focus on your application instead of creating a good read me file.
+* Creates a README.md file for your application so you can focus on writing rad code!
 ## Contributors <a id="contributors"></a>
 * Bootcamp Spot
 ## Running Tests <a id="testing"></a>
-* Open your terminal and enter "node index.js". Enter all requested information. If you receive an error, there is a problem with the application.
+* Open your terminal and enter "node index.js". Follow the prompts. If you receive an error at the end, you have either entered something incorrectly or a module is missing.
 ## License
-* [MIT](https://choosealicense.com/licenses/gpl-3.0/)
+* [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
 ## Questions? Contact Me! <a id="contact"></a>
 * Github: https://github.com/dianalynshull
 * Email: dianalynshull@gmail.com
-* Preferred Contact: email
+* Preferred Contact: Email
