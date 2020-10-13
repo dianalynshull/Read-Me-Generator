@@ -77,7 +77,7 @@ function writeToFile(answers, badge, license) {
     }
     else if (answers.license === "MIT") {
         badge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
-        license = "[MIT](https://choosealicense.com/licenses/gpl-3.0/)"
+        license = "[MIT](https://choosealicense.com/licenses/mit/)"
     }
     else if (answers.license === "ISC") {
         badge = "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)";
